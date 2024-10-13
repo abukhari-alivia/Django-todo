@@ -4,8 +4,10 @@ FROM python:3
 # Set the working directory
 WORKDIR /data
 
-# Install necessary packages for Django
-RUN apt-get update && apt-get install -y python3-setuptools python3-wheel
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y python3-setuptools python3-wheel python3-dev build-essential && \
+    apt-get clean
 
 # Install Django 3.2
 RUN pip install django==3.2
